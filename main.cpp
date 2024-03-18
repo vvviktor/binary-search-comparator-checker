@@ -29,7 +29,7 @@ class BinSearchChecher {
     BinSearchChecher() = default;
     BinSearchChecher(Ostream& out) : out_(out) {}
 
-    template <typename Container = std::vector<T>>
+    template <typename Container>
     void LowerBoundCheck(const Container& arr, const T& value) const {
         PrintArr(arr);
         auto it = std::lower_bound(arr.begin(), arr.end(), value, comp_);
@@ -38,7 +38,7 @@ class BinSearchChecher {
              << '\n';
     }
 
-    template <typename Container = std::vector<T>>
+    template <typename Container>
     void UpperBoundCheck(const Container& arr, const T& value) const {
         PrintArr(arr);
         auto it = std::upper_bound(arr.begin(), arr.end(), value, comp_);
