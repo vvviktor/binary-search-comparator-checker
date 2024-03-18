@@ -1,4 +1,4 @@
-###The result of execution of the code above:
+### The result of execution of the code above:
 ```
 Result of comparison (lhs == 5) < (rhs == 7) is True
 Result of comparison (lhs == 5) < (rhs == 3) is False
