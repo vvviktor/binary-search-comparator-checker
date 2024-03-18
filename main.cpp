@@ -10,7 +10,7 @@ template <typename T, typename Ostream>
 class Compare {
    public:
     Compare(Ostream& out) : out_(out) {}
-    
+
     constexpr bool operator()(const T& lhs, const T& rhs) const {
         out_ << "Result of comparison "
              << "(lhs == " << lhs << ") < (rhs == " << rhs << ") is "
@@ -40,7 +40,7 @@ class BinSearchChecher {
 
     template <typename Container = std::vector<T>>
     void UpperBoundCheck(const Container& arr, const T& value) const {
-        PrintArr(arr);
+        PrintArr<Container>(arr);
         auto it = std::upper_bound(arr.begin(), arr.end(), value, comp_);
         out_ << "Upper bound for value " << value << " is "
              << (it != arr.end() ? std::to_string(*it) : "end iterator")
@@ -51,7 +51,7 @@ class BinSearchChecher {
     Ostream& out_ = std::cout;
     Comp comp_ = Comp(out_);
 
-    template <typename Container = std::vector<T>>
+    template <typename Container>
     void PrintArr(const Container& arr) const {
         out_ << "arr == [";
         bool is_first = true;
