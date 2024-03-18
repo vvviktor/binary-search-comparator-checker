@@ -20,19 +20,22 @@ class Compare {
     Ostream& out_;
 };
 
-template <typename T, typename Container = std::vector<T>,
-          typename Ostream = std::basic_ostream<char>,
+template <typename T, typename Ostream = std::basic_ostream<char>,
           typename Comp = Compare<T, Ostream>>
 class BinSearchChecher {
    public:
     BinSearchChecher() = default;
     BinSearchChecher(Ostream& out) : out_(out) {}
+
+    template <typename Container = std::vector<T>>
     void LowerBoundCheck(const Container& arr, const T& value) const {
         auto it = std::lower_bound(arr.begin(), arr.end(), value, comp_);
         out_ << "Lower bound for value " << value << " is "
              << (it != arr.end() ? std::to_string(*it) : "end iterator")
              << '\n';
     }
+
+    template <typename Container = std::vector<T>>
     void UpperBoundCheck(const Container& arr, const T& value) const {
         auto it = std::upper_bound(arr.begin(), arr.end(), value, comp_);
         out_ << "Upper bound for value " << value << " is "
