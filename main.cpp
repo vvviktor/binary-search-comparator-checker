@@ -20,14 +20,14 @@ class Compare {
     Ostream& out_;
 };
 
-template <typename T, typename Container = std::vector<T>,
-          typename Ostream = std::basic_ostream<char>,
+template <typename T, typename Ostream = std::basic_ostream<char>,
           typename Comp = Compare<T, Ostream>>
 class BinSearchChecher {
    public:
     BinSearchChecher() = default;
     BinSearchChecher(Ostream& out) : out_(out) {}
 
+    template <typename Container = std::vector<T>>
     void LowerBoundCheck(const Container& arr, const T& value) const {
         PrintArr(arr);
         auto it = std::lower_bound(arr.begin(), arr.end(), value, comp_);
@@ -36,6 +36,7 @@ class BinSearchChecher {
              << '\n';
     }
 
+    template <typename Container = std::vector<T>>
     void UpperBoundCheck(const Container& arr, const T& value) const {
         PrintArr(arr);
         auto it = std::upper_bound(arr.begin(), arr.end(), value, comp_);
@@ -48,6 +49,7 @@ class BinSearchChecher {
     Ostream& out_ = std::cout;
     Comp comp_ = Comp(out_);
 
+    template <typename Container = std::vector<T>>
     void PrintArr(const Container& arr) const {
         out_ << "arr == [";
         bool is_first = true;
