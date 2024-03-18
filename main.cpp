@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <fstream>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -67,9 +68,12 @@ class BinSearchChecher {
 
 }  // namespace bin_search_checker
 
-int main(int, char**) {
+int main(int argc, char** argv) {
+    std::ofstream out_file =
+        argc > 1 ? std::ofstream(*++argv) : std::ofstream();
+    std::ostream* out = argc > 1 ? &out_file : &std::cout;
     std::vector<int> arr{2, 3, 5, 7, 9, 12, 14};
-    bin_search_checker::BinSearchChecher<int> checker;
+    bin_search_checker::BinSearchChecher<int> checker(*out);
     checker.UpperBoundCheck(arr, 5);
     checker.LowerBoundCheck(arr, 5);
 }
