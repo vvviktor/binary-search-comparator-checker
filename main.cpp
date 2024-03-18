@@ -40,7 +40,7 @@ class BinSearchChecher {
 
     template <typename Container = std::vector<T>>
     void UpperBoundCheck(const Container& arr, const T& value) const {
-        PrintArr<Container>(arr);
+        PrintArr(arr);
         auto it = std::upper_bound(arr.begin(), arr.end(), value, comp_);
         out_ << "Upper bound for value " << value << " is "
              << (it != arr.end() ? std::to_string(*it) : "end iterator")
