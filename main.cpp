@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 
+namespace bin_search_checker {
+
 template <typename T, typename Ostream>
 class Compare {
    public:
@@ -38,9 +40,11 @@ class BinSearchChecher {
     Comp comp_ = Comp(out_);
 };
 
+}  // namespace bin_search_checker
+
 int main(int, char**) {
     std::vector<int> arr{2, 3, 5, 7, 9, 12, 14};
-    BinSearchChecher<int> checker;
+    bin_search_checker::BinSearchChecher<int> checker;
     checker.UpperBoundCheck(arr, 5);
     checker.LowerBoundCheck(arr, 5);
 }
