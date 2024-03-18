@@ -10,6 +10,7 @@ template <typename T, typename Ostream>
 class Compare {
    public:
     Compare(Ostream& out) : out_(out) {}
+    
     constexpr bool operator()(const T& lhs, const T& rhs) const {
         out_ << "Result of comparison "
              << "(lhs == " << lhs << ") < (rhs == " << rhs << ") is "
