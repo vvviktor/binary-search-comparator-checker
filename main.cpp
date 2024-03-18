@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <string>
 #include <vector>
 
 namespace bin_search_checker {
@@ -28,11 +29,15 @@ class BinSearchChecher {
     BinSearchChecher(Ostream& out) : out_(out) {}
     void LowerBoundCheck(const Container& arr, const T& value) const {
         auto it = std::lower_bound(arr.begin(), arr.end(), value, comp_);
-        out_ << "Lower bound for value " << value << " is " << *it << '\n';
+        out_ << "Lower bound for value " << value << " is "
+             << (it != arr.end() ? std::to_string(*it) : "end iterator")
+             << '\n';
     }
     void UpperBoundCheck(const Container& arr, const T& value) const {
         auto it = std::upper_bound(arr.begin(), arr.end(), value, comp_);
-        out_ << "Upper bound for value " << value << " is " << *it << '\n';
+        out_ << "Upper bound for value " << value << " is "
+             << (it != arr.end() ? std::to_string(*it) : "end iterator")
+             << '\n';
     }
 
    private:
